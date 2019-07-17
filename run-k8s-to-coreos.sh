@@ -57,8 +57,10 @@ systemctl enable --now kubelet
 # Initialize Kubernetes cluster
 kubeadm init --pod-network-cidr=192.168.0.0/16
 
-# Follow post-installation instructions from previous command
-# Don't forget to add Kubernetes configuration to ~/.kube/config
+# Copy Kubernetes configuration to home folder
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Download, customize and apply Calico configuration to pass CoreOS limitations
 curl -sSL "https://docs.projectcalico.org/v3.8/manifests/calico.yaml" | sed "s:/usr/libexec/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds:/var/lib/kubelet/volume-plugins/nodeagent~uds:g" > calico.yaml
