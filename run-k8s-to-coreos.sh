@@ -45,7 +45,7 @@ mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/kubernetes/${RELEASE}/build/debs/10-kubeadm.conf" | sed "s:/usr/bin:/opt/bin:g" > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 # Replace 10-kubeadm.conf with modified one
-curl -sSL "URL" > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+curl -sSL "https://raw.githubusercontent.com/kozhin/k8s-to-coreos/master/patches/10-kubeadm.conf" > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 # Run Kubelet service
 systemctl enable --now kubelet
@@ -68,7 +68,7 @@ kubectl apply -f calico.yaml
 kubectl create -n kube-system serviceaccount administrator
 
 # Download and apply admin binding policy
-curl -sSL "URL" > create-administrator.yaml
+curl -sSL "https://raw.githubusercontent.com/kozhin/k8s-to-coreos/master/templates/create-administrator.yaml" > create-administrator.yaml
 kubectl apply -f create-administrator.yaml
 
 # You can get authentication token with
