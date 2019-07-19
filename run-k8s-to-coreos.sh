@@ -77,4 +77,4 @@ kubectl apply -f create-administrator.yaml
 # kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep administrator | awk '{print $1}')
 
 # Download and install Kubernetes Dashboard
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta2/aio/deploy/recommended.yaml
